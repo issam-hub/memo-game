@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: bisque;
+}
+.game {
+    width: fit-content;
+    background-color: goldenrod;
+    margin: 80px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+    position: relative;
+    user-select: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 10px 2px #b1acac;
+}
+.game.no-click {
+    pointer-events: none;
+}
+.game .element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+.game .flip,
+.game .matched {
+    transform: rotateY(-180deg);
+}
+.game .element .face {
+    backface-visibility: hidden;
+}
+.game .element .front {
+    font-size: 2.5rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(12, 201, 169);
+    background-color: #555;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+}
+.game .element .back {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    border: 3px solid orange;
+}
+.tries {
+    position: absolute;
+    top: -60px;
+    right: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: monospace;
+}
+.tries::before {
+    content: "Wrong Tries: ";
+}
+.control-btns {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0 0 0 / 80%);
+}
+.control-btns h1 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -webkit-text-stroke: 1px white;
+}
+.control-btns p{
+    margin: 30px 0;
+    font-size: 1.2rem;
+    font-family: fantasy;
+    letter-spacing: 2px;
+    color: darkorchid;
+}
+.control-btns button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(146deg, rgb(82, 10, 117), rgb(177, 59, 177));
+    box-shadow: inset 1px -3px 10px 3px rgb(81 9 116);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
