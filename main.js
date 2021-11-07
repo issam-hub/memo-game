@@ -112,12 +112,14 @@ function checkSimilarity(elOne, elTwo){
         // Congratulations On Winning
         win.style.display = "flex";
     }
+    // Displaying Loser Page
     if(tries.innerHTML === "10"){
         setTimeout(()=>{
             loser.style.display = "flex";
         }, 500);
+        // Reload The Game To Start Again
         loserBtn.onclick = ()=>{
-            window.location.reload(false);
+            window.open("https://issam-hub.github.io/memo-game/", "_self");
         }
     }
 }
