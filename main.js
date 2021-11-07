@@ -112,12 +112,12 @@ function checkSimilarity(elOne, elTwo){
         // Congratulations On Winning
         win.style.display = "flex";
     }
-    if(tries.innerHTML === "10"){
+    if(tries.innerHTML === "3"){
         setTimeout(()=>{
             loser.style.display = "flex";
         }, 500);
         loserBtn.onclick = ()=>{
-            window.open("http://127.0.0.1:5500/index.html", "_self");
+            window.location.reload(false);
         }
     }
 }
