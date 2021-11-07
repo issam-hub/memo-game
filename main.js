@@ -112,7 +112,7 @@ function checkSimilarity(elOne, elTwo){
         // Congratulations On Winning
         win.style.display = "flex";
     }
-    if(tries.innerHTML === "3"){
+    if(tries.innerHTML === "10"){
         setTimeout(()=>{
             loser.style.display = "flex";
         }, 500);
