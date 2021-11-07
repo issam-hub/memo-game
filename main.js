@@ -5,7 +5,17 @@ let controlBtn = document.querySelector(".control-btns button");
 // Hide The Welcome Interface
 controlBtn.onclick = ()=>{
     control.remove();
+    // Showing The Boxs For About A Minute Before The Game Starts
+    boxs.forEach((box)=>{
+        box.classList.add("flip");
+        setTimeout(()=>{
+            box.classList.remove("flip");
+        }, 1000);
+    })
 }
+
+// A Counter Will Know By It If The Player Win
+let counter = 0;
 
 // Flip On Click And Reorder Elements And Do the Check
 let game = document.querySelector(".game");
@@ -21,7 +31,7 @@ boxs.forEach((box, index)=>{
     // ReOrder Elements
     box.style.order = orderRange[index];
     box.onclick = () => {
-    //    Flip The Element
+        // Flip The Element
        flipBlock(box);
     }
 });
@@ -55,11 +65,14 @@ function stopClicking(){
     game.classList.add("no-click");
     setTimeout(()=>{
         game.classList.remove("no-click");
-    }, 1000)
+    }, 1100);
 }
 // The Checking Function
 function checkSimilarity(elOne, elTwo){
     let tries = document.querySelector(".tries");
+    let win = document.querySelector(".winner");
+    let loser = document.querySelector(".loser");
+    let loserBtn = document.querySelector(".loser button");
 
     // In Case Of The Two Elements Are Similar
     if(elOne.dataset.tech === elTwo.dataset.tech){
@@ -73,6 +86,8 @@ function checkSimilarity(elOne, elTwo){
         document.getElementById("win").volume = 0.5;
         // Play The Sound
         document.getElementById("win").play();
+        // Increase The Counter
+        counter++;
     }
     // In Case Of The Two Elements Are Not Similar
     else {
@@ -91,5 +106,18 @@ function checkSimilarity(elOne, elTwo){
         setTimeout(()=>{
             document.getElementById("lose").play();
         }, 100);
+    }
+    // Checking If Player Win
+    if(counter == 10){
+        // Congratulations On Winning
+        win.style.display = "flex";
+    }
+    if(tries.innerHTML === "10"){
+        setTimeout(()=>{
+            loser.style.display = "flex";
+        }, 500);
+        loserBtn.onclick = ()=>{
+            window.open("http://127.0.0.1:5500/index.html", "_self");
+        }
     }
 }
