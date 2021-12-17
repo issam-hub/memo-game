@@ -3,6 +3,7 @@
 # memo-game
 Test Your Memory With This Game, Have Fun !
 
+### live demo: [memory game](https://issam-hub.github.io/memo-game/)
 
 ## What I Learned : 
 - the pointer events in css and how you can stop events from responding
